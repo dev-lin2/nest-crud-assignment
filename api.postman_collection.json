@@ -1,0 +1,636 @@
+{
+	"info": {
+		"_postman_id": "b9cc4ce6-39fd-418f-9bc5-71b0ec4504c6",
+		"name": "Test Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24146173"
+	},
+	"item": [
+		{
+			"name": "Create Location",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"building_name\": \"A\",\n    \"room_name\": \"Cafe\",\n    \"location_number\": \"ABC\",\n    \"area\": 36.12,\n    \"parent_location_id\": 11\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/location",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"location"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"building_name\": \"A\",\n    \"room_name\": \"Lobby\",\n    \"location_number\": \"01\",\n    \"area\": 36.12\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/location",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "110"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"6e-V6fLoOSsCX9Xh2LooVq79NTpEYM\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Jun 2024 12:03:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"building_name\": \"A\",\n    \"room_name\": \"Lobby\",\n    \"location_number\": \"01\",\n    \"area\": 36.12,\n    \"parent_location_id\": null\n}"
+				},
+				{
+					"name": "With parent location",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"building_name\": \"A\",\n    \"room_name\": \"Second Floor\",\n    \"location_number\": \"01\",\n    \"area\": 36.12,\n    \"parent_location_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/location",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "246"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f6-Ti5zT3Bp9cIeqxFHOg3TrA6Rz0w\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Jun 2024 12:07:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 3,\n    \"building_name\": \"A\",\n    \"room_name\": \"Second Floor\",\n    \"location_number\": \"01\",\n    \"area\": 36.12,\n    \"parent_location_id\": 2,\n    \"parent_location\": {\n        \"id\": 2,\n        \"building_name\": \"A\",\n        \"room_name\": \"First Floor\",\n        \"location_number\": \"05\",\n        \"area\": 36.12,\n        \"parent_location_id\": 1\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/location",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"location"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/location",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "915"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"393-RaVvOnA1gAurr8NgigPP1SwMnFU\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Jun 2024 12:17:32 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"building_name\": \"A\",\n        \"room_name\": \"Lobby\",\n        \"location_number\": \"01\",\n        \"area\": 36.12,\n        \"parent_location_id\": null,\n        \"parent_location\": null,\n        \"child_locations\": [\n            {\n                \"id\": 2,\n                \"building_name\": \"A\",\n                \"room_name\": \"First Floor\",\n                \"location_number\": \"05\",\n                \"area\": 36.12,\n                \"parent_location_id\": 1\n            }\n        ]\n    },\n    {\n        \"id\": 2,\n        \"building_name\": \"A\",\n        \"room_name\": \"First Floor\",\n        \"location_number\": \"05\",\n        \"area\": 36.12,\n        \"parent_location_id\": 1,\n        \"parent_location\": {\n            \"id\": 1,\n            \"building_name\": \"A\",\n            \"room_name\": \"Lobby\",\n            \"location_number\": \"01\",\n            \"area\": 36.12,\n            \"parent_location_id\": null\n        },\n        \"child_locations\": [\n            {\n                \"id\": 3,\n                \"building_name\": \"A\",\n                \"room_name\": \"Second Floor\",\n                \"location_number\": \"01\",\n                \"area\": 36.12,\n                \"parent_location_id\": 2\n            }\n        ]\n    },\n    {\n        \"id\": 3,\n        \"building_name\": \"A\",\n        \"room_name\": \"Second Floor\",\n        \"location_number\": \"01\",\n        \"area\": 36.12,\n        \"parent_location_id\": 2,\n        \"parent_location\": {\n            \"id\": 2,\n            \"building_name\": \"A\",\n            \"room_name\": \"First Floor\",\n            \"location_number\": \"05\",\n            \"area\": 36.12,\n            \"parent_location_id\": 1\n        },\n        \"child_locations\": []\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/location/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"location",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get detail",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/location/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "267"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"10b-39zf+4dKQwnA2W5NFXfvlxTrJqs\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Jun 2024 12:17:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"building_name\": \"A\",\n    \"room_name\": \"Lobby\",\n    \"location_number\": \"01\",\n    \"area\": 36.12,\n    \"parent_location_id\": null,\n    \"parent_location\": null,\n    \"child_locations\": [\n        {\n            \"id\": 2,\n            \"building_name\": \"A\",\n            \"room_name\": \"First Floor\",\n            \"location_number\": \"05\",\n            \"area\": 36.12,\n            \"parent_location_id\": 1\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Update location",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"building_name\": \"A\",\n    \"room_name\": \"Cafe\",\n    \"location_number\": \"ALPHA\",\n    \"area\": 36.12\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/location/8",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"location",
+						"8"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Not Found",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"building_name\": \"A\",\n    \"room_name\": \"Cafe\",\n    \"location_number\": \"ABC\",\n    \"area\": 36.12,\n    \"parent_location_id\": 11\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/location/18",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location",
+								"18"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "69"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"45-j49W2j7+wXeDqv7959bxIOIv3B8\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Jun 2024 12:44:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Location not found\",\n    \"error\": \"Not Found\",\n    \"statusCode\": 404\n}"
+				},
+				{
+					"name": "Update successful",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"building_name\": \"A\",\n    \"room_name\": \"Cafe\",\n    \"location_number\": \"ALPHA\",\n    \"area\": 36.12\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/location/8",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location",
+								"8"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "241"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f1-djraCBoaHl6oULU/uwfZihAdaxg\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Jun 2024 12:46:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 8,\n    \"building_name\": \"A\",\n    \"room_name\": \"Cafe\",\n    \"location_number\": \"01-ALPHA\",\n    \"area\": 36.12,\n    \"parent_location_id\": 1,\n    \"parent_location\": {\n        \"id\": 1,\n        \"building_name\": \"A\",\n        \"room_name\": \"Lobby\",\n        \"location_number\": \"01\",\n        \"area\": 36.12,\n        \"parent_location_id\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete location",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/location/6",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"location",
+						"6"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Not Found",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/location/88",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location",
+								"88"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "69"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"45-j49W2j7+wXeDqv7959bxIOIv3B8\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Jun 2024 12:51:49 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Location not found\",\n    \"error\": \"Not Found\",\n    \"statusCode\": 404\n}"
+				},
+				{
+					"name": "Forbidden",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/location/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location",
+								"1"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "96"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"60-sNj9IJLYiFl1ZzagJxLE+LNRz2U\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Jun 2024 12:52:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Cannot delete a location with child locations\",\n    \"error\": \"Forbidden\",\n    \"statusCode\": 403\n}"
+				},
+				{
+					"name": "Successful",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/location/6",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location",
+								"6"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "106"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"6a-oZ98TSL56OYXWv8tTXvGl6HJWvg\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Jun 2024 12:53:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 6,\n    \"building_name\": \"A\",\n    \"room_name\": \"Cafe\",\n    \"location_number\": \"05\",\n    \"area\": 36.12,\n    \"parent_location_id\": 1\n}"
+				}
+			]
+		}
+	]
+}
