@@ -2,6 +2,8 @@ import {
   BadRequestException,
   ForbiddenException,
   Injectable,
+  Logger,
+  LoggerService,
   NotFoundException,
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
@@ -13,7 +15,11 @@ import { locationUpdateValidator } from './dto/locationUpdateValidator';
 
 @Injectable()
 export class LocationService {
-  constructor(private databaseService: DatabaseService) {}
+  private readonly logger = new Logger(LocationService.name);
+
+  constructor(
+    private databaseService: DatabaseService,
+  ) {}
 
   async create(createLocationDto: Prisma.LocationCreateInput) {
     // perform validation
@@ -28,6 +34,7 @@ export class LocationService {
       const validationErrors = errors.map((error) =>
         Object.values(error.constraints),
       );
+      this.logger.log('Create input validation errors', validationErrors);
       throw new BadRequestException(validationErrors);
     }
 
@@ -82,6 +89,7 @@ export class LocationService {
     });
 
     if (!location) {
+      this.logger.log(`Location not found with id : ${id}`);
       throw new NotFoundException('Location not found');
     }
 
@@ -100,6 +108,7 @@ export class LocationService {
     });
 
     if (!location) {
+      this.logger.log(`Location not found with id : ${id}`);
       throw new NotFoundException('Location not found');
     }
 
@@ -116,6 +125,7 @@ export class LocationService {
       const validationErrors = errors.map((error) =>
         Object.values(error.constraints),
       );
+      this.logger.log('Update input validation errors', validationErrors);
       throw new BadRequestException(validationErrors);
     }
 
@@ -155,6 +165,7 @@ export class LocationService {
     });
 
     if (!location) {
+      this.logger.log(`Location not found with id : ${id}`);
       throw new NotFoundException('Location not found');
     }
 
@@ -168,6 +179,7 @@ export class LocationService {
 
       // If the location has child locations, throw an error or handle it accordingly
       if (childLocations.length > 0) {
+        this.logger.log('Trying to delete location with child locations');
         throw new ForbiddenException(
           'Cannot delete a location with child locations',
         );
